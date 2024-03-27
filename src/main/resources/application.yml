@@ -1,0 +1,20 @@
+server:
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+  port: 9050
+  max-http-request-header-size: 785000
+  tomcat:
+    accesslog:
+      enabled: true
+    threads:
+      min-spare: 50
+      max: 350
+spring:
+  application:
+    name: springboot-web-demo
+
+
+service:
+  baseUrl: "/services/${spring.application.name}"
