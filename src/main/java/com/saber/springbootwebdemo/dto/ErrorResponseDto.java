@@ -4,7 +4,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ErrorDto {
+public class ErrorResponseDto {
     private Integer code;
     private String message;
     private Object originalMessage;
