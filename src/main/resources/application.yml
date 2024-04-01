@@ -23,3 +23,11 @@ service:
     title: 'springboot web demo'
     description: 'springboot web demo'
 
+springdoc:
+  swagger-ui:
+    display-request-duration: true
+    disable-swagger-default-url: true
+    display-operation-id: true
+    tags-sorter: alpha
+  api-docs:
+    path: "/services/${spring.application.name}/v3/api-docs"
