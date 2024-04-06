@@ -21,7 +21,6 @@ import java.util.Random;
 public class ChallengeServiceTest {
     private ChallengeGeneratorService challengeGeneratorService;
     private ChallengeService challengeService;
-
     @Spy
     private Random random;
 

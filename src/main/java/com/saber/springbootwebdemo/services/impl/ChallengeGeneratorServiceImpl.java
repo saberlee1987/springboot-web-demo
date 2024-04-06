@@ -2,8 +2,9 @@ package com.saber.springbootwebdemo.services.impl;
 
 import com.saber.springbootwebdemo.domains.challenge.Challenge;
 import com.saber.springbootwebdemo.services.ChallengeGeneratorService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
-
 import java.util.Random;
 
 @Service
@@ -25,6 +26,11 @@ public class ChallengeGeneratorServiceImpl implements ChallengeGeneratorService 
     }
     @Override
     public Challenge randomChallenge() {
-        return new Challenge(next(),next());
+        Integer factorA = next();
+        Integer factorB = next();
+        Challenge challenge = new Challenge(factorA, factorB);
+       // HttpSession session = request.getSession(true);
+       // session.setAttribute(session.getId(),challenge);
+        return challenge;
     }
 }
