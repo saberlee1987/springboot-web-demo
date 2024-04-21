@@ -1,10 +1,8 @@
 package com.saber.springbootwebdemo.controllers;
 
-import com.saber.springbootwebdemo.domains.challenge.Challenge;
+import com.saber.springbootwebdemo.domains.challenge.query.Challenge;
 import com.saber.springbootwebdemo.services.ChallengeGeneratorService;
-import com.saber.springbootwebdemo.services.ChallengeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

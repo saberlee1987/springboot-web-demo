@@ -1,8 +1,8 @@
 package com.saber.springbootwebdemo;
 
 import com.saber.springbootwebdemo.controllers.ChallengeAttemptController;
-import com.saber.springbootwebdemo.domains.challenge.ChallengeAttempt;
-import com.saber.springbootwebdemo.domains.user.User;
+import com.saber.springbootwebdemo.domains.challenge.query.ChallengeAttempt;
+import com.saber.springbootwebdemo.domains.user.query.User;
 import com.saber.springbootwebdemo.dto.ChallengeAttemptDto;
 import com.saber.springbootwebdemo.services.ChallengeService;
 import org.assertj.core.api.BDDAssertions;
@@ -44,8 +44,7 @@ public class ChallengeAttemptControllerTest {
         );
 
         ChallengeAttempt responseChallenge = new ChallengeAttempt(
-                attemptId, user.getId()
-                , user.getAlias()
+                attemptId, user
                 , 50, 70, 3500
                 , true
         );
@@ -65,7 +64,7 @@ public class ChallengeAttemptControllerTest {
 
     @Test
     public void postInValidTest() throws Exception {
-        long attemptId = 5L;
+       // long attemptId = 5L;
         User user = new User(12L, "saber66");
         ChallengeAttemptDto requestChallenge = new ChallengeAttemptDto(
                 2000, -70, user.getAlias(), 1

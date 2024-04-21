@@ -17,6 +17,12 @@
         <java.version>17</java.version>
         <camel.version>4.4.1</camel.version>
         <openapi.version>2.0.2</openapi.version>
+        <querydsl.version>5.0.0</querydsl.version>
+        <jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
+        <jdbc.url>jdbc:mysql://localhost:3306/test2</jdbc.url>
+        <jdbc.username>saber66</jdbc.username>
+        <jdbc.password>AdminSaber66</jdbc.password>
+        <jdbc.schema>test2</jdbc.schema>
     </properties>
     <dependencies>
         <dependency>
@@ -30,6 +36,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -72,6 +82,30 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>${querydsl.version}</version>
+            <classifier>jakarta</classifier>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <classifier>jakarta</classifier>
+            <version>${querydsl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-sql-codegen</artifactId>
+            <version>${querydsl.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-sql-spring</artifactId>
+            <version>${querydsl.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
@@ -96,6 +130,45 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-maven-plugin</artifactId>
+                <version>${querydsl.version}</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>export</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jdbcDriver>${jdbc.driver}</jdbcDriver>
+                    <jdbcUrl>${jdbc.url}</jdbcUrl>
+                    <jdbcUser>${jdbc.username}</jdbcUser>
+                    <jdbcPassword>${jdbc.password}</jdbcPassword>
+                    <schemaPattern>${jdbc.schema}</schemaPattern>
+                    <schemaToPackage>true</schemaToPackage>
+                    <packageName>com.saber.springbootwebdemo.domains</packageName>
+                    <beanPackageName>com.saber.springquerydsldemo.domains.</beanPackageName>
+                    <targetFolder>target/generated-sources/sql</targetFolder>
+                    <beansTargetFolder>target/generated-sources/sql</beansTargetFolder>
+                    <exportAll>false</exportAll>
+                    <exportBeans>false</exportBeans>
+                    <exportViews>false</exportViews>
+                    <sourceFolder>src</sourceFolder>
+                    <customTypes>
+                        <customType>com.querydsl.sql.types.JSR310LocalDateTimeType</customType>
+                    </customTypes>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>8.0.24</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

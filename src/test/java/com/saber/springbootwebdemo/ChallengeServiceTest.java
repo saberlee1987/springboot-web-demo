@@ -1,7 +1,7 @@
 package com.saber.springbootwebdemo;
 
-import com.saber.springbootwebdemo.domains.challenge.Challenge;
-import com.saber.springbootwebdemo.domains.challenge.ChallengeAttempt;
+import com.saber.springbootwebdemo.domains.challenge.query.Challenge;
+import com.saber.springbootwebdemo.domains.challenge.query.ChallengeAttempt;
 import com.saber.springbootwebdemo.dto.ChallengeAttemptDto;
 import com.saber.springbootwebdemo.services.ChallengeGeneratorService;
 import com.saber.springbootwebdemo.services.ChallengeService;

@@ -1,7 +1,6 @@
 package com.saber.springbootwebdemo.services;
 
-import com.saber.springbootwebdemo.domains.challenge.Challenge;
-import jakarta.servlet.http.HttpServletRequest;
+import com.saber.springbootwebdemo.domains.challenge.query.Challenge;
 
 public interface ChallengeGeneratorService {
 

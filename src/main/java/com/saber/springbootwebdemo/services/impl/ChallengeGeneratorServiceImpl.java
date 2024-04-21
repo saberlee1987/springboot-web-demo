@@ -1,9 +1,7 @@
 package com.saber.springbootwebdemo.services.impl;
 
-import com.saber.springbootwebdemo.domains.challenge.Challenge;
+import com.saber.springbootwebdemo.domains.challenge.query.Challenge;
 import com.saber.springbootwebdemo.services.ChallengeGeneratorService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 import java.util.Random;
 

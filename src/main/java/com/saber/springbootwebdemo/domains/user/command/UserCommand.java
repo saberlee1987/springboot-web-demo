@@ -1,14 +1,15 @@
-package com.saber.springbootwebdemo.domains.challenge;
+package com.saber.springbootwebdemo.domains.user.command;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Challenge implements Serializable {
-    private Integer factorA;
-    private Integer factorB;
+public class UserCommand implements Serializable {
+    private Long id;
+    private String alias;
 }
