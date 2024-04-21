@@ -13,6 +13,7 @@ import java.io.Serializable;
 @Table(name = "challengeAttempt")
 public class ChallengeAttempt implements Serializable {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "userId")
