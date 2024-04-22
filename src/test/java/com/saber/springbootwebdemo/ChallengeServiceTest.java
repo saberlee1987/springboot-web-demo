@@ -5,30 +5,54 @@ import com.saber.springbootwebdemo.domains.challenge.query.ChallengeAttempt;
 import com.saber.springbootwebdemo.dto.ChallengeAttemptDto;
 import com.saber.springbootwebdemo.services.ChallengeGeneratorService;
 import com.saber.springbootwebdemo.services.ChallengeService;
-import com.saber.springbootwebdemo.services.impl.ChallengeGeneratorServiceImpl;
-import com.saber.springbootwebdemo.services.impl.ChallengeServiceImpl;
 import org.assertj.core.api.BDDAssertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.BDDMockito;
 import org.mockito.Spy;
-import org.mockito.junit.jupiter.MockitoExtension;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Random;
 
-@ExtendWith(MockitoExtension.class)
+//@ExtendWith(MockitoExtension.class)
+@SpringBootTest
 public class ChallengeServiceTest {
+    @Autowired
     private ChallengeGeneratorService challengeGeneratorService;
+    @Autowired
     private ChallengeService challengeService;
     @Spy
     private Random random;
+//    @Mock
+//    private  MessageSource messageSource;
+//    @Mock
+//    private  ChallengeAttemptCommandRepository challengeAttemptCommandRepository;
+//    @Mock
+//    private  UserCommandRepository userCommandRepository;
+//    @Mock
+//    private  UserQueryRepository userQueryRepository;
+//    @Mock
+//    private  ChallengeAttemptQueryRepository challengeAttemptQueryRepository;
+//    @Mock
+//    private  UserMapper userMapper;
+//    @Mock
+//    private  ChallengeAttemptMapper challengeAttemptMapper;
+//    @Mock
+//    private  TransactionTemplate transactionTemplate;
 
-    @BeforeEach
-    public void setup() {
-        challengeGeneratorService = new ChallengeGeneratorServiceImpl(random);
-        challengeService = new ChallengeServiceImpl();
-    }
+//    @BeforeEach
+//    public void setup() {
+//        challengeGeneratorService = new ChallengeGeneratorServiceImpl(random);
+//        challengeService = new ChallengeServiceImpl(messageSource,challengeAttemptCommandRepository
+//                ,userCommandRepository,userQueryRepository
+//                ,challengeAttemptQueryRepository,userMapper
+//                ,challengeAttemptMapper,transactionTemplate);
+//        BDDMockito.given(userQueryRepository.findByAlias("saber")).willReturn(Optional.of(
+//                new User(2L,"saber")
+//        ));
+//
+//        BDDMockito.given(challengeAttemptCommandRepository.saveChallengeAttempt(BDDMockito.any()))
+//                .will(AdditionalAnswers.returnsLastArg());
+//    }
 
     @Test
     public void generateRandomFactorIsBetweenExceptedLimits() {
@@ -43,4 +67,5 @@ public class ChallengeServiceTest {
                 50, 60, "saber", 3000);
         ChallengeAttempt verifyAttempt = challengeService.verifyAttempt(attemptDto);
         BDDAssertions.then(verifyAttempt.getIsCorrect()).isTrue();
-    }}
+    }
+}
