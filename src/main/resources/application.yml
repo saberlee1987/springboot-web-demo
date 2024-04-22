@@ -43,7 +43,7 @@ spring:
 service:
   baseUrl: "/services/${spring.application.name}"
   swagger:
-    version: 'version1.0.0-1403/01/11'
+    version: 'version1.0.1-1403/02/03'
     title: 'springboot web demo'
     description: 'springboot web demo'
 
